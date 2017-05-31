@@ -2,10 +2,16 @@
   "name": "yes",
   "version": "1.0.0",
   "description": "SECURACCOUNT (securaccount.com)",
+<<<<<<< HEAD
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+=======
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> 50d6d54e805e1006a101c7d5a643e42a6ea1cb1a
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/wheaters22/SecurAccount/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/wheaters22/SecurAccount#readme"
+=======
+  "homepage": "https://github.com/wheaters22/SecurAccount#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  }
+>>>>>>> 50d6d54e805e1006a101c7d5a643e42a6ea1cb1a
 }
