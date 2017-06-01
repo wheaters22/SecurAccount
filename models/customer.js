@@ -17,16 +17,16 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		}
-		// ,
-		// {
-		// 	classMethods: {
-		// 		associate:  function(models) {
-		// 			Customer.hasMany(models.Post, {
-		// 				onDelete: "cascade"
-		// 			});
-		// 		}
-		// 	}	
-		// }
+		,
+		{
+			classMethods: {
+				associate:  function(models) {
+					Customer.hasMany(models.Customers, models.PayFroms, models.PayTos, models.Records, {
+							onDelete: "cascade"
+					});
+				}
+			}	
+		}
 	);
 
 	return Customer;
