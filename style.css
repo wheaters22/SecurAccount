@@ -1,32 +1,124 @@
 * {
 	margin: 0; padding: 0; border: 0;
 }
-h1 {
+
+/************************** START Navagation bar ************************************/
+
+#my-navbar{
+	background-color: #222930;
+	color:#E9E9E9;
+}
+
+
+#navbar-collapase > ul > li > a, .navbar-inverse .navbar-brand {
+ color: #E9E9E9;
+}
+.navbar-right {
+	color: #1ec3f3;
+} 
+
+/****************************END Navagation bar *************************************/
+
+/*----- ----------------------Start Paralax ----------------------------------------*/
+
+/* ===== FIRST STRUCTURE ===== */
+.container {
+	max-width: 960px;
+	margin: 0 auto; 
+}
+
+/* ===== SECTIONS  ===== */
+
+section.module: last-child {
+	margin-bottom: 0;
+}
+
+section.module h2 {
+	margin-bottom: 40px;
+	font-family: "Roboto Slab", serif;
+	font-size: 30px;
+}
+
+section.module p {
+	margin-bottom: 40px;
+	font-family: "Roboto Slab", serif;
+	font-size: 300px;
+
+}
+
+section.module p: last-child {
+	margin-bottom: 0;
+
+}
+
+section.module.content {
+	padding: 40px 0;
+}
+
+section.module.parallax {
+	padding: 240px 0;
+	background-position: 0 0;
+}
+
+/*section.module.parallax h1, h3{
+	color: #1ec3f3;
+	font-size: 48px;
+	line-height: 1;
+	font-weight: 700;
 	text-align: center;
-	font-size: 575%;
-	color: #4A4444;
 	text-transform: uppercase;
-	letter-spacing: 1%;
-	margin: 45% 0;
+	text-shadow: 0 0 24px #1ec3f3;
+}*/
+
+section.module.parallax-1 {
+	background-image: url("./img/demo/background.jpg");
+	background-size: cover;
 }
 
-h2 {
-	text-align: center;
-	font-size: 275%;
-	color: #E5E5E5;
-	text-transform: uppercase;
-	letter-spacing: 1%;
+section.module.parallax-2 {
+	background-image: url("./img/demo/data.jpg");
+	background-size: cover;
 }
 
-/*----- Start Paralax ---*/
-.parallax {
-	background: url('./img/cyber.jpg') repeat fixed 100%;
+section.module.parallax-3 {
+	background-image: url("./img/demo/security.jpg");
+	background-size: cover;
 }
-.pararalax-inner {
-	padding-top: 18%;
-	padding-bottom: 10%;
-
+section.module.parallax-4 {
+	background-image: url("./img/demo/center.jpg");
+	background-size: cover;
 }
 
-/*----- END Paralax ---*/
+
+@media all and (min-width: 600px) {
+	section.module h2 {
+		font-size: 42px;
+	}
+
+	section.module p {
+		font-size: 20px;
+	}
+
+	setion.module.parallax {
+		padding: 300px 0;
+	}
+	/*section.module.parallax h1, h3 {
+		font-size: 96px;
+	}*/
+}
+@media all and (min-width: 960px) {
+	section.module.parallax h1 {
+		font-size: 160px;
+	}
+}
+
+
+
+
+
+
+
+
+
+/*---------------------------- END Paralax -----------------------------------------*/
 
