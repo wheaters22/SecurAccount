@@ -1,18 +1,4 @@
 {
-  "development": {
-    "username": "root",
-    "password": "Eruces1960PW",
-    "database": "securaccount_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "root",
-    "database": "securaccount_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
   "production": {
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
