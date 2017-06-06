@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <!-- Icons font awesome --> 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <!-- Linking the user login page -->
+    <link  href="login.html" rel="loginsheet"/>
     <title>SecurAccount</title>
 </head>
 
@@ -31,10 +33,10 @@
                 <a href="" class="navbar-brand">Home</a>
             </div>
             <div class="collapase navbar-collapase" id="navbar-collapase">
-                <a href="" class="btn btw-warning navbar-btn navbar-right">Login or Sign up</a>
+                <a href="login.html" class="btn btw-warning navbar-btn navbar-right">Login or Sign up</a>
                 <ul class="nav navbar-nav">
                     <li><a href="#about">About</a>
-                        <li><a href="services">Our Services</a>
+                        <li><a href="#services">Our Services</a>
                             <li><a href="#contact">Contact us</a>
                 </ul>
             </div>
@@ -51,7 +53,7 @@
     </div>
         
     <!-- Content Box-1 -->
-    <section class="module content">
+    <section id="about" class="module content">
         <div class="container">
             <h2>About</h2>
             <p>SecurAccount is an innovative group of young developers with a strong focus on database development that brings practical solutions to promote credit card information storage, efficiency and prosperity of industrial and non-industrial partners with a real application in practice. Provides solutions in the following areas: credit card loss, credit card payments and processing, process innovation, industrial automation, material innovation. The ambition of our database is to provide comprehensive services throughout our costumers lifecycle - from credit card solutions, storage of payment information, tracking of payments, simulation verification of system, support for the implementation of cyber security and continuous improvement. </p>
@@ -65,7 +67,7 @@
         </div-->
     </div>
     <!-- Content Box-2 -->
-    <section class="module content">
+    <section id="services" class="module content">
         <div class="container">
             <h2>Why should you choose our service?</h2>
             <p>As a costumer, you want easy, efficient, reliable and secure disaster recovery (DR), no matter the platform or location. SecurAccount is one of the only DR solutions providers with a 20-year track record of proven performance. With broad platform compatibility, support for both physical and virtual deployments and highly customizable retention settings, it’s the smartest choice for protecting your critical business or personal data.</p>
@@ -100,8 +102,10 @@
             <img src="./img/demo/added.jpg" id="service-photo" alt="service photo">
         </div>
     </section>
+    <!-- Parallax end here -->  
+
     <!-- Footer starts here -->
-   <footer class="footer-distributed">
+   <footer id="contact" class="footer-distributed">
 
             <div class="footer-left">
 
@@ -159,10 +163,9 @@
 
         </footer>
 
-<!-- Parallax end here -->  
 
-        <!-- Link Javascript -->
-        <script type="text/javascript" src="JavaScript/secur.js"></script>
+
+        
         <!-- CDN for Parallax -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://rawgit.com/pixelcog/parallax.js/master/parallax.js"></script>
