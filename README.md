@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 # SecurAccount
@@ -20,3 +21,7 @@ You should wind up with a display like this:
 
 ![Output Screenshot](mysqlWBTestOutput.PNG)
 >>>>>>> 7afaa23608aab2d41709e4834e928010bd4f9651
+=======
+***SECURACCOUNT***
+Front end part. 
+>>>>>>> Stashed changes
