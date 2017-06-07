@@ -26,7 +26,7 @@ $(document).ready(function() {
       return;
     }
     // Calling the upsertAuthor function and passing in the value of the name input
-    upsertAuthor({
+    upsertCustomer({
       name: nameInput
         .val()
         .trim()
