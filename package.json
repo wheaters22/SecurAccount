@@ -18,7 +18,11 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+<<<<<<< HEAD
     "jsonwebtoken": "^7.4.1",
+=======
+    "method-override": "^2.3.9",
+>>>>>>> d9105f43d9912ef949cec1576b49e63062d66d50
     "mysql": "^2.13.0",
     "sequelize": "^3.30.4"
   }
