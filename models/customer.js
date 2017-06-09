@@ -1,3 +1,4 @@
+
 module.exports = function(sequelize, DataTypes) {
 	var Customer = sequelize.define(
 		"Customer", 
@@ -17,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		}
-		// ,
+
 		// {
 		// 	classMethods: {
 		// 		associate:  function(models) {
