@@ -1,107 +1,81 @@
 var db = require("../models");
 var path = require("path");
 module.exports = function(app) {
-
+  //main page/initial load (start with login.html, change to splash as project progresses)
   app.get("/login", function(req, res) {
-       res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   app.get("/", function(req, res) {
-       res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  //  app.get("/customers", function(req, res) {
-
-  //      db.Customers.findAll({}).then(function(dbCustomers) {
-  //         res.json(dbCustomers);
-  //      });
-  // });
-
-//MAKE A SIGNUP HTML PAGE AND GET REQUEST HERE....?
-
-//CODE FROM CUSTOMER-ROUTES.JS FILE
-   app.get("/customers:id", function(req, res) {
-       db.Customer.findOne({
-           where: {
-              id: req.params.id
-           },
-           // include: [db.Customer]
-      }).then(function(dbCustomer) {
-           res.json(dbCustomer);
-       }).catch(function(err) {
-            console.log("id test error");
-            res.json(err);
-       });
-  });
-
-  app.post("/customers", function(req, res) {
-      db.Customer.create(req.customer_name, req.customer_pw).then(function(dbCustomer) {
-          res.json(dbCustomer);
-       });
-   });
-
-   app.delete("/customers/:id", function(req, res) {
-       db.Customer.destroy({
-          where: {
-               id: req.params.id
-           }
-           // include: [db.Records]
-        }).then(function(dbCustomer) {
-            res.json(dbCustomer);
-        });
+  app.post("/signup", function(req, res) {
+    // customer trying to sign up, so check for username in db.Customer
+    db.Customer.findOne({
+      where: {
+        customer_name: req.body.customer_name
+      }
+    }).then(function(dbCustomer){
+      // if a customer exists, dbCustomer is (not null)/true condition, which is a signup failure
+      // sign ups must not use an existing username
+      // otherwise create the new user
+      if (dbCustomer) {
+        res.send("signup-failure");
+      } else {
+        db.Customer.create({
+          customer_name: req.body.customer_name,
+          customer_pw: req.body.customer_pw
+        }).then(res.send("signup-success"))
+    	    .catch(function(err){
+          console.log("app.js post signup error");
+          console.log(err);
+          res.send("signup-failure");
+    	  });
+      }
     });
-//create new customer in the database login
-app.post("/customers", function(req, res) {
-    db.Customer.create({
-        customer_name: req.body.customer_name,
-        customer_pw: req.body.customer_pw
-    }).then(function(dbCustomer) {
-        res.json(dbCustomer);
-    }).catch(function(err) {
-        console.log("app customers error");
-        res.json(err);
+ });
+
+ // jlb 6-8-2017-0232 begin INCOMPLETE block
+ //  app.post("/authenticate", function(req, res) {
+ //    // customer trying to login, so try to match username and PW
+ //    db.Customer.findOne({
+ //      where: {
+ //          customer_name: req.body.customer_name,
+ //          customer_pw: req.body.customer_pw
+ //      }
+ //    }).then(function(dbCustomer){
+ //      // if query is successful, dbCustomer is not null
+ //      // turn this into the true condition
+ //      // with the NOT operator
+ //      // if successful, authenticate and proceed
+ //      if (!dbCustomer) {
+ //        res.send("login-failure");
+ //      } else {
+ //        db.Customer.create({
+ //          customer_name: req.body.customer_name,
+ //          customer_pw: req.body.customer_pw
+ //        }).then(res.send("login-success"))
+ //          .catch(function(err){
+ //          console.log("app.js post login error");
+ //          console.log(err);
+ //          res.send("login-failure");
+ //        });
+ //      }
+ //    });
+ // });
+// jlb 6-8-2017-0232 end INCOMPLETE block
+ 
+
+
+  app.get("/records", function(req, res){
+    db.Record.findAll({
+      where: {customer_id: req.token.userId},
+      include: [db.PayTo, db.PayFrom, db.Customer]      
+    }).then(function(result){
+      // res.json(result);
+      console.log("result--\n", JSON.stringify(result));
+      res.render('summary', {summary: result});
     });
   });
-
-
-
-//CODE FOR TRANSACTION.JS FILE
-//create new record post - append to customer ID (after signup or loing; need to carry auth token)
-app.post("/transact", function (req, res) {
-  db.PayFroms.create({
-    bank_name: req.body.bank_name // MUST MATCH "FORM" ELEMENT NAME
-    //SHOULD I INCLUDE THE OTHER DB TABLES + FIELDS
-  }).then(function(dbPayFroms) {
-    res.json(dbPayFroms);
-  });
-})
-
-}; //FINAL BRACKET
-
-// app.get("/transact", function (req, res) {
-//   db.PayFroms.findOne({
-//     bank_name: req.body.bank_name
-//     //SHOULD I INCLUDE THE OTHER DB TABLES + FIELDS
-//   }).then(function(dbPayFroms) {
-
-//CODE FROM model -> institution.js FILE
-
-//get route for retrieving full customer record, after login + authentication:
-// app.get("/customer:id")
-
-// Need to include transact.html routes code here. Save all field rqd for other tables
-
-//CODE FROM model -> records.js FILE
-
-
-
-//CODE FROM model -> vendors.js FILE
-
-
-
-
-
-
-//PLACE ALL ROUTES JS INTO THE ROUTES.JS FILE
-// add all customer-api-routes into this page
-
+};
