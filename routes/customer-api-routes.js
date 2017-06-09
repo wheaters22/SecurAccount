@@ -1,13 +1,5 @@
 // var db = require("../models");
 
-// module.exports = function(app) {
-//   app.get("/customers", function(req, res) {
-
-//     db.Customers.findAll({
-//     }).then(function(dbCustomers) {
-//       res.json(dbCustomers);
-//     });
-//   });
 
 //   app.get("/customers/:id", function(req, res) {
 //     db.Record.findOne({
@@ -37,3 +29,4 @@
 //   });
 
 // };
+
