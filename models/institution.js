@@ -10,6 +10,16 @@ module.exports = function(sequelize, DataTypes) {
 					len: [1]
 				}
 			}
+		},
+
+		{
+			classMethods: {
+				associate: function(models) {
+					PayFrom.hasMany(models.Records, {
+						onDelete: "cascade"
+					});
+				}
+			}
 		}
 	);
 
