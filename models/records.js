@@ -50,17 +50,17 @@ module.exports = function(sequelize, DataTypes) {
 				allowNull: false,
 				validate: { min: 1 }
 			}
+		},
+
+		{
+			classMethods: {
+				associate:  function(models) {
+					Record.BelongsTo(models.Customers, models.PayFroms, models.PayTos, {
+						onDelete: "cascade"
+					});
+				}
+			}	
 		}
-		// ,
-		// {
-		// 	classMethods: {
-		// 		associate:  function(models) {
-		// 			Record.hasMany(models.Post, {
-		// 				onDelete: "cascade"
-		// 			});
-		// 		}
-		// 	}	
-		// }
 	);
 
 	return Record;

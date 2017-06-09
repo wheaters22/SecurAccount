@@ -14,10 +14,10 @@
 <body>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>Create You're Account</h1>
+            <h1>Create A New Transaction</h1>
             <div class="container-form">
-                <form id="signup-form">
-                    <div class="form-group">
+                <form id="transact-form">
+                   <!--  <div class="form-group">
                         <label for="InputUser">Username</label>
                         <input type="text" class="form-control" id="InputUser" placeholder="Enter Username">
                     </div>
@@ -25,30 +25,29 @@
                         <label for="InputPassword">Password</label>
                         <input type="password" class="form-control" id="InputPassword" placeholder="Enter Password">
                     </div>
-                    <div id="fi-input" class="form-group">
-                      <label for="InputFI">Add a Bank or Finincial Institution</label>
+                    <div id="fi-input" class="form-group"> -->
+                      <label for="PayFrom">Add a Bank or Finincial Institution</label>
                     <!--    IF WE WANT TO HAVE AN OPEN TEXT AREA TO ADD THEIR BANK OR FI; SINCE WE AREN'T VERIFYING WITH FI THAT ACCOUNT IS REAL
                     <input id="fi-name" type="text" class="form-control" placeholder="Enter Bank of Financial Institution"> -->
                   <!--   </div> -->
-                      <select class="form-control">
-                        <option>Wells Fargo</option>
-                        <option>Bank of America</option>
-                        <option>Chase Bank</option>
-                        <option>American Express</option>
-                        <option>SunTrust Bank</option>
-                        <option>BB&T Bank</option>
+                      <select name="PayFrom" id="PayFrom" class="form-control">
+                        <option value="1">Wells Fargo</option>
+                        <option value="2">Bank of America</option>
+                        <option value="3">Chase Bank</option>
+                        <option value="4">American Express</option>
+                        <option value="5">SunTrust Bank</option>
+                        <option value="6">BB&T Bank</option>
                         <!-- <option>Other</option>  WOULD NEED CODE TO EXPAND A text-input FIELD -->
                       </select>
                     </div>
                     <div id="AcctType_input" class="form-group">
                       <label for="InputAcctType">Select Account Type</label>
-                        <select class="form-control">Select Your Financial Institution
-                          <option>Checking Account</option>
-                          <option>Credit Card</option>
-                          <option>Mortgage</option>
-                          <option>Car Loan</option>
-                          <option>Student Loan</option>
-                          <option>Other</option>
+                        <select class="form-control" id="InputAcctType">Select Your Financial Institution
+                          <option value="1">Checking Account</option>
+                          <option value="2">Credit Card</option>
+                          <option value="3">Mortgage</option>
+                          <option value="4">Car Loan</option>
+                          <option value="5">Student Loan</option>
                         </select>
                     <div id="vendor_input" class="form-group">
                       <label for="Inputvendor">Add a Vendor</label>
@@ -77,7 +76,7 @@
                     <div class="row-buttons">
                         <div class="row top-30">
                             <div id="signup" class="col-md-6 col-sm-4">
-                                <a class="btn btn-default" href="/login">Sign-Up</a>
+                                <a class="btn btn-default" href="/login">Keep Track!</a>
                             </div>
                         </div>
                     </div>
