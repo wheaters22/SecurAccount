@@ -1,8 +1,43 @@
 $(document).ready(function(){
 
+	$.ajaxSetup({
+	    beforeSend: function(xhr) {
+	        var token = sessionStorage.getItem("token");
+	        if(token) 
+	            xhr.setRequestHeader("authorization", token);
+	    }
+	});
+
+	$("#login-btn").click("submit", function (event) {
+	    event.preventDefault();
+		var nameInput = $("#LoginUser");
+		var pwInput = $("#LoginPassword");
+		var postReqData = {
+			customer_name: nameInput.val().trim(),
+			customer_pw: pwInput.val().trim()
+		}
+	    ajaxSA("POST", "/authenticate", postReqData, sessStorAndGetRecords);
+	});
+
+	function sessStorAndGetRecords(data){
+		sessionStorage.setItem("token", data.token);
+		// ajaxSA("GET", "/records");
+        $.ajax({
+	        method: "GET",
+	        url: "/records",
+	        data: {},
+	        success: function(completeHtmlPage) {
+			    $("html").empty();
+    			$("html").append(completeHtmlPage);
+    		}
+	    }).done().fail(function(err){
+	    	console.log(">ERROR: app.js, " + method +", " + url + "<");
+	    	console.log(err);
+	    });
+	}
+
 	$("#signup-btn").click(function () {
     	event.preventDefault();
-		// $("#data-panel").text("signup button clicked");		
 		var nameInput = $("#LoginUser");
 		var pwInput = $("#LoginPassword");
 		var postReqData = {
@@ -12,21 +47,6 @@ $(document).ready(function(){
 	    $("#data-panel").empty();
 	    ajaxSA("POST", "/signup", postReqData, createResult);
 	});
-
-// jlb 6-8-2017-0232 begin INCOMPLETE block
-	// LOGIN SEQUENCE
-	// // jlb 6-8-2017-0232 untested 
-	// $("#login-btn").click(function () {
-    	// event.preventDefault();
-	    // var $form = $("#form-loginsignup");
-		// ajaxSA("POST", "/authenticate", $form.serialize(), setSeshStor);
-
-	// jlb 6-8-2017-0232 untested
- 	// function setSeshStor(data) {
-		// sessionStorage.setItem("token", data.token);
-	// }
-// jlb 6-8-2017-0232 end INCOMPLETE block
- 
 
 	function createResult(data) {
 		if (data === "signup-success") {
@@ -50,4 +70,5 @@ $(document).ready(function(){
 	    	console.log(err);
 	    });
 	}
+
 });
